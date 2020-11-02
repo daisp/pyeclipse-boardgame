@@ -41,4 +41,4 @@ for faction_file in os.listdir('data/factions/'):
     faction_json = json.load(open('data/factions/' + faction_file))
     factions.append(create_faction_json(faction_json))
 
-print len(factions), 'factions loaded...'
+print(len(factions), 'factions loaded...')

@@ -49,15 +49,14 @@ class HexManager(object):
         x += self.x_offset
         y += self.y_offset
         return (x, y)
-    
+
     def get_rel_rect_coord_from_hex_coord(self, u, v):
         x = self.hex_width * u / 2
         y = self.hex_height34 * v
         return (x, y)
-    
+
+
 if __name__ == "__main__":
     hm = HexManager(20.0)
     u, v = hm.get_hex_from_rect_coord(21, 0)
-    print hm.get_rect_coord_from_hex_coord(u, v)
-    
-    
+    print(hm.get_rect_coord_from_hex_coord(u, v))

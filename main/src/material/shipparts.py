@@ -26,11 +26,11 @@ def create_ship_part_tile(row):
 def load_ship_part_file(file_name):
     reader = csv.reader(open(file_name), delimiter = ';')
     #skip the first line
-    reader.next()
+    next(reader)
     for row in reader:
         tile = create_ship_part_tile(row)
         ship_parts[tile.name] = tile
-    print len(ship_parts), 'ship parts tile loaded...'
+    print(len(ship_parts), 'ship parts tile loaded...')
 
 load_ship_part_file('data/shipparts.csv')
 

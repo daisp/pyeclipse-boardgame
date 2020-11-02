@@ -19,7 +19,7 @@ def create_technology_tile(row):
 def load_technology_tile_file(file_name):
     reader = csv.reader(open(file_name), delimiter = ';')
     #skip the first line
-    reader.next()
+    next(reader)
     for row in reader:
         tech = create_technology_tile(row)
         technology_tile_type[tech.name] = tech

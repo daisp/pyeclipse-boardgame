@@ -38,8 +38,7 @@ def create_sector_tile(row):
 reader = csv.reader(open('data/sectortiles.csv'), delimiter = ';')
 
 #skip the first line
-reader.next()
-
+next(reader)
 for row in reader:
     if row[0][0] == '0':
         galactic_center.append(create_sector_tile(row))
@@ -53,9 +52,8 @@ for row in reader:
     elif row[0][0] == '3':
         outer_hexes.append(create_sector_tile(row))
 
-
-print len(galactic_center), 'gc loaded...'
-print len(inner_hexes), 'inner sector tiles loaded...'
-print len(middle_hexes), 'middle sector tiles loaded...'
-print len(outer_hexes), 'outer sector tiles loaded...'
-print len(starting_hexes), 'starting sector tiles loaded...'
+print(len(galactic_center), 'gc loaded...')
+print(len(inner_hexes), 'inner sector tiles loaded...')
+print(len(middle_hexes), 'middle sector tiles loaded...')
+print(len(outer_hexes), 'outer sector tiles loaded...')
+print(len(starting_hexes), 'starting sector tiles loaded...')

@@ -51,7 +51,7 @@ class MainMenu(Menu):
         self.create_menu(items)
 
     def on_new_game(self):
-        print 'launch game'
+        print('launch game')
         game = Game(6)
         MainScreen(game)
         

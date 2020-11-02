@@ -743,7 +743,7 @@ class PlayerBoardLayer(Layer):
             
     def on_mouse_press (self, x, y, button, modifiers):
         x, y = director.get_virtual_coordinates(x, y)
-        print self.rect_player_board.contains(x, y)
+        print(self.rect_player_board.contains(x, y))
         
 class ResearchBoardLayer(Layer):
     is_event_handler = True
@@ -856,9 +856,9 @@ class HudLayer(Layer):
                     self.sub_layer.add_image('ship_stats/%s_%d.png' % (stat_name, count),
                                                  scale = scale)
             else:
-                for dummy in xrange(ship_stats[stat_name]):
+                for dummy in range(ship_stats[stat_name]):
                     self.sub_layer.add_image('ship_stats/%s.png' % (stat_name,),
-                                             scale = scale)
+                                             scale=scale)
         elif ship_stats[stat_name] != 0:
             self.sub_layer.add_space_to(350)
             self.sub_layer.add_text(stat_name + ': ' + str(ship_stats[stat_name]), font_size = 40)
@@ -1251,7 +1251,7 @@ class MainScreen(Layer):
     def next_player_action_phase(self):
         if self.player_action is None:
             # TODO if they've selected an action but they haven't used it yet, then they've also passed (and return the disc)
-            print 'player has passed'
+            print('player has passed')
             # TODO see if they're now 1st player or if the action phase is done
             # TODO these checks should be done in the game code - pass parameter to end_turn indicating if they're done anything?
         if self.current_gui_action is not None:

@@ -25,13 +25,14 @@ def create_discovery_tile(row):
         int(row[14])
     )
 
-reader = csv.reader(open('data/discoverytiles.csv'), delimiter = ';')
 
-#skip the first line
-reader.next()
+reader = csv.reader(open('data/discoverytiles.csv'), delimiter=';')
+
+# skip the first line
+next(reader)
 
 for row in reader:
     for dummy in range(int(row[0])):
         discovery_tiles.append(create_discovery_tile(row))
 
-print len(discovery_tiles), 'discovery tiles loaded...'
+print(len(discovery_tiles), 'discovery tiles loaded...')
