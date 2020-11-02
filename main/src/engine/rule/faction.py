@@ -1,5 +1,6 @@
-__author__="jglouis"
-__date__ ="$Dec 23, 2011 1:16:52 PM$"
+__author__ = "jglouis"
+__date__ = "$Dec 23, 2011 1:16:52 PM$"
+
 
 class Faction(object):
     def __init__(self, name, color, board, actions, trade, sector,

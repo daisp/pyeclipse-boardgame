@@ -1,16 +1,16 @@
 from engine.component import SectorTile
 import csv
 
-__author__="jglouis"
-__date__ ="$Dec 21, 2011 3:31:15 PM$"
+__author__ = "jglouis"
+__date__ = "$Dec 21, 2011 3:31:15 PM$"
 
-
-#this module generates three lists of sector types + the GCDS in a separate variable
+# this module generates three lists of sector types + the GCDS in a separate variable
 galactic_center = []
 inner_hexes = []
 middle_hexes = []
 outer_hexes = []
 starting_hexes = []
+
 
 def create_sector_tile(row):
     return SectorTile(
@@ -35,9 +35,10 @@ def create_sector_tile(row):
         int(row[18])
     )
 
-reader = csv.reader(open('data/sectortiles.csv'), delimiter = ';')
 
-#skip the first line
+reader = csv.reader(open('data/sectortiles.csv'), delimiter=';')
+
+# skip the first line
 next(reader)
 for row in reader:
     if row[0][0] == '0':

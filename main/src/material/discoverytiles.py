@@ -1,11 +1,11 @@
 from engine.component import DiscoveryTile
 import csv
 
-__author__="jglouis"
-__date__ ="$Dec 22, 2011 5:09:31 PM$"
-
+__author__ = "jglouis"
+__date__ = "$Dec 22, 2011 5:09:31 PM$"
 
 discovery_tiles = []
+
 
 def create_discovery_tile(row):
     return DiscoveryTile(

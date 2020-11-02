@@ -1,25 +1,31 @@
-__author__="jglouis"
-__date__ ="$Dec 21, 2011 10:35:50 AM$"
+__author__ = "jglouis"
+__date__ = "$Dec 21, 2011 10:35:50 AM$"
+
 
 class Component(object):
     """
     Components are the real game objects manipulated by the players.
     Each component must belong to one game zone at any time.
     """
+
     def when_placed(self, game):
         pass
 
+
 class PersonalComponent(Component):
     """A PersonalComponent is a component with one owner."""
+
     def __init__(self, owner):
         self.owner = owner
 
+
 class SectorTile(Component):
     """An hexagon tile."""
-    def __init__(self, hex_id, name, victory_points, n_money = 0, nr_money = 0,
-    n_science = 0, nr_science = 0, n_material = 0, nr_material = 0, n_wild = 0,
-    discovery = False, n_ancients = 0, artifact = False, wormhole1 = 0,
-    wormhole2 = 0, wormhole3 = 0, wormhole4 = 0, wormhole5 = 0, wormhole6 = 0,):
+
+    def __init__(self, hex_id, name, victory_points, n_money=0, nr_money=0,
+                 n_science=0, nr_science=0, n_material=0, nr_material=0, n_wild=0,
+                 discovery=False, n_ancients=0, artifact=False, wormhole1=0,
+                 wormhole2=0, wormhole3=0, wormhole4=0, wormhole5=0, wormhole6=0, ):
         self.id = hex_id
         self.name = name
         self.victory_points = victory_points
@@ -29,7 +35,7 @@ class SectorTile(Component):
         self.nr_science = nr_science
         self.n_material = n_material
         self.nr_material = nr_material
-        self.n_wild = n_wild        
+        self.n_wild = n_wild
         self.discovery = discovery
         self.n_ancients = n_ancients
         self.artifact = artifact
@@ -41,9 +47,11 @@ class SectorTile(Component):
                           wormhole6
                           ]
 
+
 class TechnologyTile(Component):
     """A research tile."""
-    def __init__(self, name, cost = None, min_cost = None, category = None, tech_type = None):
+
+    def __init__(self, name, cost=None, min_cost=None, category=None, tech_type=None):
         """
         tech_type is either ship_part, build, instant or None
         category is either military, grid or nano
@@ -54,10 +62,11 @@ class TechnologyTile(Component):
         self.type = tech_type
         self.category = category
 
+
 class ShipPartTile(Component):
-    def __init__(self, name, technology_required = False, initiative = 0,
-    movement = 0, computer = 0, shield = 0, hull = 0, missile = False,
-    energy = 0, hits = 1, n_dice = 0, discovery = False):
+    def __init__(self, name, technology_required=False, initiative=0,
+                 movement=0, computer=0, shield=0, hull=0, missile=False,
+                 energy=0, hits=1, n_dice=0, discovery=False):
         self.name = name
         self.technology_required = technology_required
         self.initiative = initiative
@@ -71,10 +80,11 @@ class ShipPartTile(Component):
         self.n_dice = n_dice
         self.discovery = discovery
 
+
 class DiscoveryTile(Component):
-    def __init__(self, discover_type, money = 0, science = 0, material = 0,
-    ship_part_name = None, initiative = 0, movement = 0, computer = 0,
-    shield = 0, hull = 0, missile = False, energy = 0, hits = 0, n_dice = 0):
+    def __init__(self, discover_type, money=0, science=0, material=0,
+                 ship_part_name=None, initiative=0, movement=0, computer=0,
+                 shield=0, hull=0, missile=False, energy=0, hits=0, n_dice=0):
 
         self.type = discover_type
         if self.type == 'resource':
@@ -99,6 +109,7 @@ class DiscoveryTile(Component):
                 True
             )
 
+
 class AmbassadorTile(PersonalComponent):
     def __init__(self, owner):
         super(AmbassadorTile, self).__init__(owner)
@@ -107,12 +118,15 @@ class AmbassadorTile(PersonalComponent):
     def give_to(self, receiver):
         self.receiver = receiver
 
+
 class Monolith(Component):
     def __init__(self):
         self.victory_points = 3
 
+
 class Orbital(Component):
     pass
+
 
 class ColonyShip(PersonalComponent):
     def __init__(self, owner):
@@ -129,14 +143,16 @@ class ColonyShip(PersonalComponent):
             self.activated = True
             return True
 
+
 class AncientShip(Component):
     def __init__(self):
         self.initiative = 2
         self.computer = 1
         self.shield = 0
         self.hull = 1
-        self.cannons = [1,1]
+        self.cannons = [1, 1]
         self.missiles = []
+
 
 class GalacticCenterDefenseSystem(Component):
     def __init__(self):
@@ -144,12 +160,14 @@ class GalacticCenterDefenseSystem(Component):
         self.computer = 1
         self.shield = 0
         self.hull = 7
-        self.cannons = [1,1,1,1]
+        self.cannons = [1, 1, 1, 1]
         self.missiles = []
+
 
 class ReputationTile(Component):
     def __init__(self, victory_points):
         self.victory_points = victory_points
+
 
 class TraitorCard(Component):
     def __init__(self):
@@ -159,43 +177,50 @@ class TraitorCard(Component):
     def give_to(self, owner):
         self.owner = owner
 
+
 class Ship(PersonalComponent):
     def __init__(self, owner):
         """May be interceptor, cruiser, dreadnought or starbase"""
         super(Ship, self).__init__(owner)
         self.color = owner.color
-        
+
     def get_stats(self):
-        """return the stats of the ship"""        
+        """return the stats of the ship"""
         return self.owner.personal_board.blueprints.get_stats(self.name)
-        
+
+
 class Interceptor(Ship):
     def __init__(self, owner):
         super(Interceptor, self).__init__(owner)
         self.name = 'interceptor'
+
 
 class Cruiser(Ship):
     def __init__(self, owner):
         super(Cruiser, self).__init__(owner)
         self.name = 'cruiser'
 
+
 class Dreadnought(Ship):
     def __init__(self, owner):
         super(Dreadnought, self).__init__(owner)
         self.name = 'dreadnought'
+
 
 class Starbase(Ship):
     def __init__(self, owner):
         super(Starbase, self).__init__(owner)
         self.name = 'starbase'
 
+
 class InfluenceDisc(PersonalComponent):
     def __init__(self, owner):
         super(InfluenceDisc, self).__init__(owner)
         self.color = owner.color
 
+
 class PopulationCube(PersonalComponent):
-    def __init__(self, owner = None):
+    def __init__(self, owner=None):
         super(PopulationCube, self).__init__(owner)
         if owner is None:
             self.color = None

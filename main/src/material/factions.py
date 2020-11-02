@@ -1,15 +1,14 @@
-
 import json
 import os
 
 from engine.rule.faction import Faction
 from material.technologytiles import technology_tile_type
 
-
-__author__="jglouis"
-__date__ ="$Dec 23, 2011 11:33:19 AM$"
+__author__ = "jglouis"
+__date__ = "$Dec 23, 2011 11:33:19 AM$"
 
 factions = []
+
 
 def create_faction_json(json):
     starting_technologies = []
@@ -36,6 +35,7 @@ def create_faction_json(json):
         json["blueprints"],
         json["special"] if "special" in json else None
     )
+
 
 for faction_file in os.listdir('data/factions/'):
     faction_json = json.load(open('data/factions/' + faction_file))
