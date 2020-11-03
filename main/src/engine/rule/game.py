@@ -47,7 +47,7 @@ class Game(object):
         self.middle_sectors_drawpile = zn.DrawPile(st.middle_hexes)
         self.outer_sectors_drawpile = zn.DrawPile(st.outer_hexes)
 
-        # ...then remove the adequate number of sector form the outer draw pile
+        # ...then remove the adequate number of sector from the outer draw pile
         n = {2: 13,
              3: 8,
              4: 4,
@@ -56,7 +56,7 @@ class Game(object):
         for dummy in range(n):
             self.outer_sectors_drawpile.draw()
 
-        # choose a first player
+        # choose the first player
         random.shuffle(self.players)
         # self.current_player = self.players[0]
         self.player_iterator = self.next_player()
